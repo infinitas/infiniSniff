@@ -28,10 +28,11 @@
   </properties>
  </rule>
 
- <!-- Number of TABS code should be indenteds -->
- <rule ref="Generic.WhiteSpace.ScopeIndent">
+ <!-- Number of TABS code should be indented, don't indent doc blocks -->
+ <rule ref="Cake.WhiteSpace.ScopeIndent">
   <properties>
    <property name="indent" value="1"/>
+   <property name="exact" value="1"/>
   </properties>
  </rule>
 
