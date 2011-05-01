@@ -67,15 +67,16 @@ class Cake_Sniffs_Functions_FunctionLineCountSniff implements PHP_CodeSniffer_Sn
             $closingBracket = $tokens[$stackPtr]['scope_closer'];
 
             if ($closingBracket === null) {
-	    // Possible inline structure. Other tests will handle it.
-	    return;
-	    }
+                // Possible inline structure. Other tests will handle it.
+                return;
+            }
 
             $linesOfCode = $tokens[$closingBracket]['line'] - $tokens[$stackPtr]['line'];
         }
 
         if ($this->lineCountLimit <= $linesOfCode) {
-	    $error = "Expected lines of code in function ".$functionName."() less than, equal to  ".$this->lineCountLimit." found ".$linesOfCode.".  Refactor function";
+            $error = "Expected lines of code in function $functionName() less than," .
+               " equal to {$this->lineCountLimit} found $linesOfCode. Refactor function";
             $phpcsFile->addWarning($error, $closingBracket);
             return;
         }
