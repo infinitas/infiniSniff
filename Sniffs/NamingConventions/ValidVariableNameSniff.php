@@ -88,18 +88,9 @@ class Cake_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
                 // so we have to ignore a leading underscore if there is one and just
                 // check the main part of the variable name.
                 $originalVarName = $objVarName;
-                if (substr($objVarName, 0, 1) === '_') {
-                    $objVarName = substr($objVarName, 1);
-                }
+                $objVarName = ltrim($objVarName, '_');
 
-                // Check to see if we are dealing with an Object object variable
-                if ($tokens[$bracket]['code'] === T_OBJECT_OPERATOR ) {
-                    // We are dealing with an Object
-                    $isObject = true;
-                } else {
-                    $isObject = false;
-                }
-                if (PHP_CodeSniffer::isCamelCaps($objVarName, $isObject, true, false) === false) {
+                if (strpos($objVarName, '_')) {
                     $error = "Variable \"$originalVarName\" is not in valid camel caps format";
                     $phpcsFile->addError($error, $var);
                 } else if (preg_match('|\d|', $objVarName)) {
@@ -113,22 +104,9 @@ class Cake_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
         // so we have to ignore a leading underscore if there is one and just
         // check the main part of the variable name.
         $originalVarName = $varName;
-        if (substr($varName, 0, 1) === '_') {
-            $objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
-            if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON) {
-                // The variable lives within a class, and is referenced like
-                // this: MyClass::$_variable, so we don't know its scope.
-                $inClass = true;
-            } else {
-                $inClass = $phpcsFile->hasCondition($stackPtr, array(T_CLASS, T_INTERFACE));
-            }
+        $varName = ltrim($varName, '_');
 
-            if ($inClass === true) {
-                $varName = substr($varName, 1);
-            }
-        }
-
-        if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false) {
+        if (strpos($varName, '_')) {
             $error = "Variable \"$originalVarName\" is not in valid camel caps format";
             $phpcsFile->addError($error, $stackPtr);
         } else if (preg_match('|\d|', $varName)) {
