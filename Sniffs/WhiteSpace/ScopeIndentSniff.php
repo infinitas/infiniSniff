@@ -201,11 +201,11 @@ class Cake_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_
                         }
                     }//end if
 
-					/* CakeStart - doc blocks are not indented */
-					if ($tokens[$firstToken]['code'] === T_DOC_COMMENT) {
-						$indent = 0;
-					}
-					/* CakeEnd */
+                    /* CakeStart - doc blocks are not indented */
+                    if ($tokens[$firstToken]['code'] === T_DOC_COMMENT) {
+                        $indent = 0;
+                    }
+                    /* CakeEnd */
                 }//end if
 
                 // The token at the start of the line, needs to have its' column
