@@ -4,8 +4,47 @@ if (class_exists('Generic_Sniffs_WhiteSpace_ScopeIndentSniff', true) === false) 
     throw new PHP_CodeSniffer_Exception($error);
 }
 
-class Cake_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_ScopeIndentSniff
+class Infinitas_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_ScopeIndentSniff
 {
+    /**
+     * Calculates the expected indent of a token.
+     *
+     * @param array $tokens   The stack of tokens for this file.
+     * @param int   $stackPtr The position of the token to get indent for.
+     *
+     * @return int
+     */
+    protected function calculateExpectedIndent(array $tokens, $stackPtr)
+    {
+        $conditionStack = array();
+
+        // Empty conditions array (top level structure).
+        if (empty($tokens[$stackPtr]['conditions']) === true) {
+            if (isset($tokens[$stackPtr]['nested_parenthesis']) === TRUE
+                && empty($tokens[$stackPtr]['nested_parenthesis']) === FALSE
+            ) {
+                // Wrapped in parenthesis means it is probably in a
+                // function call (like a closure) so we have to assume indent
+                // is correct here and someone else will check it more
+                // carefully in another sniff.
+                return $tokens[$stackPtr]['column'];
+            } else {
+                return 1;
+            }
+        }
+
+        $tokenConditions = $tokens[$stackPtr]['conditions'];
+        foreach ($tokenConditions as $id => $condition) {
+            // If it's an indenting scope ie. it's not in our array of
+            // scopes that don't indent, add it to our condition stack.
+            if (in_array($condition, $this->nonIndentingScopes) === false) {
+                $conditionStack[$id] = $condition;
+            }
+        }
+
+        return ((count($conditionStack) * $this->indent) + 1);
+
+    }//end calculateExpectedIndent()
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -50,7 +89,7 @@ class Cake_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_
 
         $expectedIndent = $this->calculateExpectedIndent($tokens, $firstToken);
 
-        if ($tokens[$firstToken]['column'] !== $expectedIndent) {
+        if ($tokens[$firstToken]['column'] - 1 !== $expectedIndent) {
             $error = 'Line indented incorrectly; expected %s spaces, found %s';
             $data  = array(
                       ($expectedIndent - 1),
@@ -156,11 +195,11 @@ class Cake_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_
                         }
                     }//end if
 
-                    /* CakeStart - doc blocks are not indented */
+                    /* InfinitasStart - doc blocks are not indented */
                     if ($tokens[$firstToken]['code'] === T_DOC_COMMENT) {
                         $indent = 0;
                     }
-                    /* CakeEnd */
+                    /* InfinitasEnd */
                 }//end if
 
                 if ($column !== $indent) {

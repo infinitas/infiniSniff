@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Cake_Sniffs_Files_ModelsFileNameSniff 
+ * Infinitas_Sniffs_Files_ModelsFileNameSniff 
  *
  * Checks file name, and throws warnings if it is not in
- * complaince with CakePHP file naming conventions.
+ * complaince with InfinitasPHP file naming conventions.
  *
  */
-class Cake_Sniffs_Files_ModelsFileNameSniff implements PHP_CodeSniffer_Sniff
+class Infinitas_Sniffs_Files_ModelsFileNameSniff implements PHP_CodeSniffer_Sniff
 
 {
 
@@ -46,7 +46,7 @@ class Cake_Sniffs_Files_ModelsFileNameSniff implements PHP_CodeSniffer_Sniff
     if(preg_match("/(behaviors)/i", $path)) {
       $final_classname = $this->classname_without_type($classname, "Behavior");
       if(is_null($final_classname)) {
-        $error = "Cake convention expects the behavior class name to end with 'Behavior'";
+        $error = "Infinitas convention expects the behavior class name to end with 'Behavior'";
         $phpcsFile->addError($error, $stackPtr);
         return;
       }

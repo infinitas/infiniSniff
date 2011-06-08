@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Cake_Sniffs_Files_ControllersFileNameSniff 
+ * Infinitas_Sniffs_Files_ControllersFileNameSniff 
  *
  * Checks file name, and throws warnings if it is not in
  * complaince with CakePHP file naming conventions.
  *
  */
-class Cake_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Sniff
+class Infinitas_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Sniff
 
 {
 
@@ -44,10 +44,10 @@ class Cake_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Snif
 
     if(preg_match("/(components)/i", $path)) {
       $final_classname = $this->classname_without_type($classname, "Component");
-      $msg_on_error = "Cake convention expects the component class name to end with 'Component'";
+      $msg_on_error = "Infinitas convention expects the component class name to end with 'Component'";
     } else {
       $final_classname = $this->classname_with_type($classname, "Controller"); 
-      $msg_on_error = "Cake convention expects the controller class name to end with 'Controller'";
+      $msg_on_error = "Infinitas convention expects the controller class name to end with 'Controller'";
     }
 
     if(is_null($final_classname)) {
@@ -62,7 +62,7 @@ class Cake_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Snif
     $expected_file_name = strtolower($expected_file_name) . ".php";
 
     if(!preg_match("/" . $expected_file_name . "/", $path)) {
-      $error = "Cake convention expects the file name to be, '" . $expected_file_name . "' for Class with name, '" . $classname . "'";
+      $error = "Infinitas convention expects the file name to be, '" . $expected_file_name . "' for Class with name, '" . $classname . "'";
       $phpcsFile->addError($error, $stackPtr);
     }
   }

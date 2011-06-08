@@ -1,6 +1,6 @@
 <?php
 /**
- * Cake_Sniffs_Functions_FunctionLineCountSniff
+ * Infinitas_Sniffs_Functions_FunctionLineCountSniff
  *
  * PHP version 5
  *
@@ -13,7 +13,7 @@
  */
 
 /**
- * Cake_Sniffs_Functions_FunctionLineCountSniff.
+ * Infinitas_Sniffs_Functions_FunctionLineCountSniff.
  *
  * Checks the number of lines in a function.
  *
@@ -24,7 +24,7 @@
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @link      http://sanisoft.com/downloads/cakephp_sniffs/
  */
-class Cake_Sniffs_Functions_FunctionLineCountSniff implements PHP_CodeSniffer_Sniff
+class Infinitas_Sniffs_Functions_FunctionLineCountSniff implements PHP_CodeSniffer_Sniff
 {
 
     /**

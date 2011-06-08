@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Cake_Sniffs_Files_ViewsFileNameSniff 
+ * Infinitas_Sniffs_Files_ViewsFileNameSniff 
  *
  * Checks file name, and throws warnings if it is not in
  * complaince with CakePHP file naming conventions.
  *
  */
-class Cake_Sniffs_Files_ViewsFileNameSniff implements PHP_CodeSniffer_Sniff
+class Infinitas_Sniffs_Files_ViewsFileNameSniff implements PHP_CodeSniffer_Sniff
 
 {
 
@@ -44,10 +44,10 @@ class Cake_Sniffs_Files_ViewsFileNameSniff implements PHP_CodeSniffer_Sniff
 
     if(preg_match("/(helpers)/i", $path)) {
       $final_classname = $this->classname_without_type($classname, "Helper");
-      $msg_on_error = "Cake convention expects the helper class name to end with 'Helper'";
+      $msg_on_error = "Infinitas convention expects the helper class name to end with 'Helper'";
     } else {
       $final_classname = $this->classname_with_type($classname, "View"); 
-      $msg_on_error = "Cake convention expects the view class name to end with 'View'";
+      $msg_on_error = "Infinitas convention expects the view class name to end with 'View'";
     }
 
     if(is_null($final_classname)) {

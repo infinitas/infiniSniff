@@ -1,6 +1,6 @@
 <?php
 /**
- * Cake_Sniffs_NamingConventions_ValidVariableNameSniff.
+ * Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff.
  *
  * PHP version 5
  *
@@ -17,7 +17,7 @@ if (class_exists('PHP_CodeSniffer_Standards_AbstractVariableSniff', true) === fa
 }
 
 /**
- * Cake_Sniffs_NamingConventions_ValidVariableNameSniff.
+ * Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff.
  *
  * Checks the naming of variables and member variables.
  *
@@ -28,7 +28,7 @@ if (class_exists('PHP_CodeSniffer_Standards_AbstractVariableSniff', true) === fa
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @link      http://sanisoft.com/downloads/cakephp_sniffs/
  */
-class Cake_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
+class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
 {
 
     /**

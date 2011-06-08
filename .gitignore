@@ -1,0 +1,25 @@
+# If you are using an ide other than below add ignores for the files it creates
+# and commit the changes.
+
+# PHPEdit project files
+*.PHPEditProject
+*.PHPEditBackup
+*.LCK
+
+# Eclips project files
+.project
+.buildpath
+.settings/*
+.tmp*
+
+# vim project files
+.vimrc.custom
+
+# NetBeans project files
+nbproject/*
+
+# Geany
+*.geany
+
+# PhpStorm
+.idea
