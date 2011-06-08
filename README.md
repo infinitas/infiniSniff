@@ -3,7 +3,7 @@ PHP CodeSniffer for Infinitas
 
 This repository contains the Infinitas standard for use with the pear package [PHP CodeSniffer](http://pear.php.net/package/PHP_CodeSniffer)
 
-This is a copy of AD7six's CakePHP code sniffer rules with a few light modifications.
+This is a copy of AD7six's CakePHP code sniffer rules with a few light modifications. Its designed to be used as part of the Infinitas pre-commit hooks that can be found https://github.com/Infinitas-project/infiniHooks
 
 # Installation
 
