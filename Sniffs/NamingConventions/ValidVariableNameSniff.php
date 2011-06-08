@@ -147,9 +147,16 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
                 $phpcsFile->addError($error, $stackPtr);
                 return;
             }
+
+			/**
+			 * allow private vars to use __
+			 */
+			if(substr($varName, 0, 2) == '__'){
+				$varName = substr($varName, 1);
+			}
         }
 
-        if (PHP_CodeSniffer::isCamelCaps($varName, false, $public, false) === false) {
+		if (!PHP_CodeSniffer::isCamelCaps($varName, true, $public, false) && PHP_CodeSniffer::isCamelCaps($varName, false, $public, false) === false) {
             $error = "Variable \"$varName\" is not in valid camel caps format";
             $phpcsFile->addError($error, $stackPtr);
         } else if (preg_match('|\d|', $varName)) {
