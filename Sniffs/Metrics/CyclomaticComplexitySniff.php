@@ -76,13 +76,13 @@ class Infinitas_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSnif
         $tokens = $phpcsFile->getTokens();
 
         // Ignore abstract methods.
-        if (isset($tokens[$stackPtr]['scope_opener']) === false) {
+        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false) {
             return;
         }
 
         // Detect start and end of this function definition.
-        $start = $tokens[$stackPtr]['scope_opener'];
-        $end   = $tokens[$stackPtr]['scope_closer'];
+        $start = $tokens[$stackPtr]['parenthesis_opener'];
+        $end   = $tokens[$stackPtr]['parenthesis_closer'];
 
         // Predicate nodes for PHP.
         $find = array(

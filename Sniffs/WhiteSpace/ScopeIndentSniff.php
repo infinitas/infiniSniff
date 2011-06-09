@@ -59,7 +59,7 @@ class Infinitas_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteS
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (isset($tokens[$stackPtr]['scope_opener']) === false) {
+        if (isset($tokens[$stackPtr]['parenthesis_opener']) === false) {
             return;
         }
 
@@ -98,8 +98,8 @@ class Infinitas_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteS
             $phpcsFile->addError($error, $stackPtr, 'Incorrect', $data);
         }
 
-        $scopeOpener = $tokens[$stackPtr]['scope_opener'];
-        $scopeCloser = $tokens[$stackPtr]['scope_closer'];
+        $scopeOpener = $tokens[$stackPtr]['parenthesis_opener'];
+        $scopeCloser = $tokens[$stackPtr]['parenthesis_closer'];
 
         if (in_array($tokens[$firstToken]['code'], $this->nonIndentingScopes) === false) {
             $indent = ($expectedIndent + $this->indent);
@@ -114,8 +114,8 @@ class Infinitas_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteS
         for ($i = ($scopeOpener + 1); $i < $scopeCloser; $i++) {
 
             if (in_array($tokens[$i]['code'], PHP_CodeSniffer_Tokens::$scopeOpeners) === true) {
-                if (isset($tokens[$i]['scope_opener']) === true) {
-                    $i = $tokens[$i]['scope_closer'];
+                if (isset($tokens[$i]['parenthesis_opener']) === true) {
+                    $i = $tokens[$i]['parenthesis_closer'];
 
                     $nextToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($i + 1), null, true);
                     if ($tokens[$nextToken]['code'] === T_SEMICOLON) {

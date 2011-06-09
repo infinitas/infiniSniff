@@ -64,7 +64,7 @@ class Infinitas_Sniffs_Functions_FunctionLineCountSniff implements PHP_CodeSniff
         if ($tokens[$stackPtr]['code'] === T_FUNCTION) {
 
             $functionName = $phpcsFile->getDeclarationName($stackPtr);
-            $closingBracket = $tokens[$stackPtr]['scope_closer'];
+            $closingBracket = isset($tokens[$stackPtr]['parenthesis_closer']) ? $tokens[$stackPtr]['parenthesis_closer'] : null;
 
             if ($closingBracket === null) {
                 // Possible inline structure. Other tests will handle it.
