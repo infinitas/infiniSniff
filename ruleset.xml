@@ -10,6 +10,10 @@
  <rule ref="PEAR.NamingConventions.ValidClassName"/>
  <rule ref="Squiz.Functions.GlobalFunction"/>
  <rule ref="Squiz.ControlStructures.InlineIfDeclaration"/>
+ 
+ <!--<rule ref="Generic.Classes.DuplicateClassName"/>
+ <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+ <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>-->
 
  <!-- Lines can be 120 chars long, warn after 110 chars -->
  <rule ref="Generic.Files.LineLength">
@@ -41,5 +45,16 @@
    <property name="absolutenestingLevel" value="5"/>
   </properties>
  </rule>
+
+ <!-- thigns to ignore -->
+ <exclude-pattern>*/tests/*</exclude-pattern>
+ <exclude-pattern>*/plugins/*</exclude-pattern>
+ <exclude-pattern>*/tmp/*</exclude-pattern>
+ <exclude-pattern>*/locale/*</exclude-pattern>
+ <exclude-pattern>*/developer/*</exclude-pattern>
+ <exclude-pattern>*/releases/*</exclude-pattern>
+ <exclude-pattern>*/schema/*</exclude-pattern>
+ <exclude-pattern>*/*.js/*</exclude-pattern>
+ <exclude-pattern>*/*.css/*</exclude-pattern>
 
 </ruleset>
