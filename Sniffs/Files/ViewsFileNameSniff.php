@@ -72,7 +72,14 @@ class Infinitas_Sniffs_Files_ViewsFileNameSniff implements PHP_CodeSniffer_Sniff
       return substr($class_name, 0, strpos($class_name, $type_name));
     }
     return NULL;
-  } 
+  }
+
+  private function classname_with_type($class_name, $type_name){
+    if(preg_match("/(" . $type_name .")/", $class_name)) {
+      return substr($class_name, 0, strpos($class_name, $type_name));
+    }
+    return NULL;
+  }
 
 }//end class
 
