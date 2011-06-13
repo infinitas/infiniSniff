@@ -60,6 +60,11 @@ class Infinitas_Sniffs_Files_ViewsFileNameSniff implements PHP_CodeSniffer_Sniff
       $expected_file_name = substr($expected_file_name, 1, strlen($expected_file_name));
     }
     $expected_file_name = strtolower($expected_file_name) . ".php";
+	
+	// <file>AppHelper suppot in the helper dir
+	if(strstr($classname, 'AppHelper')){
+		return;
+	}
 
     if(!preg_match("/" . $expected_file_name . "/", $path)) {
       $error = "File name is expected to be, '" . $expected_file_name . "' for Class with name, '" . $classname . "'";
