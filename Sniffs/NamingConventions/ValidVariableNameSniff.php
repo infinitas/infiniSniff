@@ -41,6 +41,16 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
                         T_COMMENT,
                        );
 
+	public $ignore = array(
+		'message_id',
+		'reply_to',
+		'in_reply_to',
+		'primary_mime_type',
+		'sub_structure',
+		'mime_type',
+		'msg_number',
+		'part_number'
+	);
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -90,6 +100,11 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
                 $originalVarName = $objVarName;
                 $objVarName = ltrim($objVarName, '_');
 
+				// had to hack this for php imap
+				if (in_array($objVarName, $this->ignore) === true) {
+					return;
+				}
+
                 if (strpos($objVarName, '_')) {
                     $error = "Variable \"$originalVarName\" is not in valid camel caps format";
                     $phpcsFile->addError($error, $var);
@@ -105,6 +120,7 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
         // check the main part of the variable name.
         $originalVarName = $varName;
         $varName = ltrim($varName, '_');
+
 
         if (strpos($varName, '_')) {
             $error = "Variable \"$originalVarName\" is not in valid camel caps format";
@@ -128,6 +144,7 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
      */
     protected function processMemberVar(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
+
         $tokens = $phpcsFile->getTokens();
 
         $varName     = ltrim($tokens[$stackPtr]['content'], '$');
@@ -155,7 +172,7 @@ class Infinitas_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_Code
 				$varName = substr($varName, 1);
 			}
         }
-
+		
 		if (!PHP_CodeSniffer::isCamelCaps($varName, true, $public, false) && PHP_CodeSniffer::isCamelCaps($varName, false, $public, false) === false) {
             $error = "Variable \"$varName\" is not in valid camel caps format";
             $phpcsFile->addError($error, $stackPtr);
