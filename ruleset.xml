@@ -47,6 +47,7 @@
  </rule>
 
  <!-- thigns to ignore -->
+ <exclude-pattern>*/.git/*</exclude-pattern>
  <exclude-pattern>*/tests/*</exclude-pattern>
  <exclude-pattern>*/plugins/*</exclude-pattern>
  <exclude-pattern>*/tmp/*</exclude-pattern>
