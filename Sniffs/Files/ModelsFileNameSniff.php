@@ -7,7 +7,7 @@
  * complaince with InfinitasPHP file naming conventions.
  *
  */
-class Infinitas_Sniffs_Files_ModelsFileNameSniff implements PHP_CodeSniffer_Sniff
+class InfiniSniff_Sniffs_Files_ModelsFileNameSniff implements PHP_CodeSniffer_Sniff
 
 {
 

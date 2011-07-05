@@ -30,7 +30,7 @@
  * @version   Release: 1.0.1
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class Infinitas_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSniffer_Sniff
+class InfiniSniff_Sniffs_Metrics_CyclomaticComplexitySniff implements PHP_CodeSniffer_Sniff
 {
 
     /**

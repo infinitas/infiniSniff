@@ -4,7 +4,7 @@ if (class_exists('Generic_Sniffs_WhiteSpace_ScopeIndentSniff', true) === false) 
     throw new PHP_CodeSniffer_Exception($error);
 }
 
-class Infinitas_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_ScopeIndentSniff
+class InfiniSniff_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_ScopeIndentSniff
 {
     /**
      * Calculates the expected indent of a token.

@@ -7,7 +7,7 @@
  * complaince with CakePHP file naming conventions.
  *
  */
-class Infinitas_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Sniff
+class InfiniSniff_Sniffs_Files_ControllersFileNameSniff implements PHP_CodeSniffer_Sniff
 
 {
 

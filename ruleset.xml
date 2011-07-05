@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Infinitas">
+<ruleset name="infiniSniff">
  <description>Infinitas Coding standard.</description>
 
  <!-- Include some sniffs from all around the place -->
@@ -31,7 +31,7 @@
  </rule>
 
  <!-- Number of TABS code should be indented, don't indent doc blocks -->
- <rule ref="Infinitas.WhiteSpace.ScopeIndent">
+ <rule ref="infiniSniff.WhiteSpace.ScopeIndent">
   <properties>
    <property name="indent" value="1"/>
    <property name="exact" value="1"/>
